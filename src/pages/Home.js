@@ -37,8 +37,6 @@ function Home() {
 
     }
 
-    console.log('recipes', recipes)
-
     return (
         <>
             <form onSubmit={handleSubmit}>
