@@ -5,6 +5,8 @@ import SignIn from './pages/SignIn'
 import ForgotPassword from './pages/ForgotPassword'
 import Profile from './pages/Profile'
 import FullRecipe from './pages/FullRecipe'
+import ShoppingList from './pages/ShoppingList';
+import RecipeBook from './pages/RecipeBook';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path='/sign-in' element={<SignIn />}></Route>
         <Route path='/forgot-password' element={<ForgotPassword />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
+        <Route path='/shopping-list' element={<ShoppingList />}></Route>
+        <Route path='/recipe-book' element={<RecipeBook />}></Route>
       </Routes>
     </Router>
     </>

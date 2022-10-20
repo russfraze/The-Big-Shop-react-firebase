@@ -1,21 +1,32 @@
 import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
+import {getAuth} from 'firebase/auth'
+import {collection, addDoc} from 'firebase/firestore'
+import {db} from '../firebase.config'
 import axios from 'axios'
 import {FaList, FaBookmark} from 'react-icons/fa'
 
 
 
+
 function FullRecipe() {
+    const auth = getAuth()
     const params = useParams()
+
     const recipeId = params.recipeId
+
+    const [userData, setUserData] = useState({
+        name: auth.currentUser.displayName,
+        userId: auth.currentUser.uid,
+    })
+
+    const {name, userId} = userData
 
     const [recipeDetails, setRecipeDetails] = useState({
         id: recipeId,
     })
 
     const {title, image, ingredients, instructions} = recipeDetails
-
-    console.log(recipeId)
 
     useEffect(() =>{
         const getRecipeDetails = () => {
@@ -71,7 +82,18 @@ function FullRecipe() {
         getRecipeDetails()
     },[])
 
-    console.log(recipeId)
+    const addBook = async() => {
+        await addDoc(collection(db, `users/${userId}/recipebook`), {
+            recipe: recipeDetails
+        })
+        
+    }
+
+    const addShop = async() => {
+        await addDoc(collection(db, `users/${userId}/shoppinglist`), {
+            ingredients: ingredients
+        })
+    }
     
     return (
         <div>
@@ -82,8 +104,8 @@ function FullRecipe() {
             <h3>Instructions</h3>
             {`${instructions}`}
             <div>
-            <FaList size="40px"/>add ingredients to shopping list
-            <FaBookmark size="40px"/>add to recipe book
+            <FaList size="40px" onClick={addShop} />add ingredients to shopping list
+            <FaBookmark size="40px" onClick={addBook} />add to recipe book
             </div>
         </div>
     )
