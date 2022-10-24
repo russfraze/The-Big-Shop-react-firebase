@@ -5,6 +5,7 @@ import {collection, addDoc} from 'firebase/firestore'
 import {db} from '../firebase.config'
 import axios from 'axios'
 import {FaList, FaBookmark} from 'react-icons/fa'
+import {toast} from 'react-toastify'
 
 
 
@@ -26,7 +27,7 @@ function FullRecipe() {
         id: recipeId,
     })
 
-    const {title, image, ingredients, instructions} = recipeDetails
+    const {id, title, image, ingredients, instructions, calories, protein, carbs, fat, servings} = recipeDetails
 
     useEffect(() =>{
         const getRecipeDetails = () => {
@@ -41,10 +42,12 @@ function FullRecipe() {
                 console.log(response.data)
                 setRecipeDetails((prevState) => ({
                     ...prevState,
+                    id: response.data.id,
                     title: response.data.title,
                     image: response.data.image,
                     instructions: response.data.instructions,
-                    ingredients: response.data.extendedIngredients
+                    ingredients: response.data.extendedIngredients,
+                    servings: response.data.servings
                 }))
                 // this.recipes_info = response.data
                 // recipe.details = response.data
@@ -67,6 +70,13 @@ function FullRecipe() {
             }).then((response) => {
                 // let data = response.data
                 console.log(response.data)
+                setRecipeDetails((prevState) => ({
+                    ...prevState,
+                    calories: response.data.calories,
+                    protein: response.data.protein,
+                    carbs: response.data.carbs,
+                    fat: response.data.fat,
+                }))
                 // console.log(response.data.calories)
                 // this.recipes_info = response.data
 
@@ -84,15 +94,19 @@ function FullRecipe() {
 
     const addBook = async() => {
         await addDoc(collection(db, `users/${userId}/recipebook`), {
-            recipe: recipeDetails
+            id: id,
+            title: title,
+            image: image
         })
-        
+        toast.success('Recipe added to recipe book.')
     }
 
     const addShop = async() => {
         await addDoc(collection(db, `users/${userId}/shoppinglist`), {
-            ingredients: ingredients
+            title: title,
+            ingredients: ingredients,
         })
+        toast.success('Ingredients added to shopping list.')
     }
     
     return (
@@ -103,6 +117,12 @@ function FullRecipe() {
             <p>{ingredients ? ingredients.map((ingredient) => ingredient.original + ' ' ) : ''}</p>
             <h3>Instructions</h3>
             {`${instructions}`}
+            <h3>Macro Nutrition</h3>
+            <p>Calories: {calories}</p>
+            <p>Protein: {protein}</p>
+            <p>Carbs: {carbs}</p>
+            <p>Fat: {fat}</p>
+            <h3>Servings: {servings}</h3>
             <div>
             <FaList size="40px" onClick={addShop} />add ingredients to shopping list
             <FaBookmark size="40px" onClick={addBook} />add to recipe book
