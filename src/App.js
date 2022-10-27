@@ -26,10 +26,15 @@ function App() {
           <Route path='/register' element={<Register />}></Route>
           <Route path='/sign-in' element={<SignIn />}></Route>
           <Route path='/forgot-password' element={<ForgotPassword />}></Route>
-          <Route path='/profile' element={<Profile />}></Route>
+
+          <Route path='profile' element={<PrivateRoute />}>
+            <Route path='/profile' element={<Profile />}></Route>
+          </Route>
+
           <Route path='shopping-list' element={<PrivateRoute />}>
             <Route path='/shopping-list' element={<ShoppingList />}></Route>
           </Route>
+          
           <Route path='recipe-book' element={<PrivateRoute />}>
             <Route path='/recipe-book' element={<RecipeBook />}></Route>
           </Route>
