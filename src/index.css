@@ -39,4 +39,5 @@ body {
   justify-content: start;
   background-color: bisque;
   margin: 5px;
+  border-radius: 10px;
 }
