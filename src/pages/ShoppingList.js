@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { getAuth } from 'firebase/auth'
-import { getDocs, query, collection } from 'firebase/firestore'
+import { getDocs, query, collection, deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import Ingredient from '../components/Ingredient'
-import IngredientSet from '../components/IngredientSet'
+import { FirebaseError } from 'firebase/app'
+
 
 
 function ShoppingList() {
@@ -80,16 +81,41 @@ function ShoppingList() {
             console.log(sorted)
             setIngSorted(sorted)
         }
-    }, [])
+    }, [ingredientsList])
     
+
+    // delete all documents in the recipe book 
+    const clearList = async() => {
+        try {
+            const listingRef = collection(db, `users/${uid}/shoppinglist`)
+
+            const q = query(listingRef)
+
+            const querySnapshot = await getDocs(q)
+
+            const results = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id}))
+            console.log('results',results)
+            results.forEach(async (result) => {
+                console.log(result.id)
+                const docRef = doc(db, `users/${uid}/shoppinglist`, result.id )
+                await deleteDoc(docRef)
+                setIngredientsList(null)
+                setIngSorted(null)
+            })
+
+        } catch (error) {
+            
+        }
+        
+    }
 
 
 
     return (
         <div>
             <h1>shopping list</h1>
-            {/* {ingredientsList ? ingredientsList.map((set) => <IngredientSet title={set.title} ingArray={set.ingredients} />) : ''} */}
-            {ingSorted ? ingSorted.map((ing) => <Ingredient aisle={ing.aisle} name={ing.name} amount={ing.amount} unit={ing.unit}  title={ing.recipeTitle} />) : ''}
+            {ingSorted ? ingSorted.map((ing) => <Ingredient aisle={ing.aisle} name={ing.name} amount={ing.measures.us.amount} unit={ing.measures.us.unitShort}  title={ing.recipeTitle} key={ing.id} />) : ''}
+            <button onClick={clearList}>Clear list</button>
         </div>
     )
 }

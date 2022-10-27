@@ -33,6 +33,15 @@ body {
 
 
 
+/* Shopping List page */
+
+.shopList-buttons {
+  display: flex;
+  width: 60px;
+  justify-content: space-between;
+  margin-left: 15px
+}
+
 .ingredient{
   display: flex;
   align-items: center;
@@ -41,3 +50,13 @@ body {
   margin: 5px;
   border-radius: 10px;
 }
+
+.checked-ingredient {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: lightgray;
+  margin: 5px;
+  border-radius: 10px;
+}
+
