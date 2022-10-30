@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { getAuth } from 'firebase/auth'
+import '../styles/navbar.css'
 
 function Navbar() {
     const [navIsOpen, setNavIsOpen] = useState(false)
@@ -19,7 +20,7 @@ function Navbar() {
     console.log(navIsOpen)
 
     return (
-        <nav className='navigation'>
+        <nav className='navigation' onClick={navIsOpen ? () => setNavIsOpen(!navIsOpen) : ''}>
 
             <div className='logo'>
                 <h1>BIGSHOP</h1>
