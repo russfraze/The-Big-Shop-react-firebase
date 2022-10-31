@@ -1,0 +1,77 @@
+
+/* Shopping List page */
+
+
+h2 {
+    color: #f4f4f4;
+    font-size: 20px;
+}
+
+p {
+    font-size: 12px;
+    font-weight: 100;
+    color: #f4f4f4;
+}
+
+
+.shopList-buttons {
+    display: flex;
+    width: 60px;
+    justify-content: space-between;
+    margin-left: 15px
+}
+  
+.ingredient{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #4c4c52;
+    margin: 1px 5px 8px 5px;
+    border-radius: 10px;
+}
+
+.ing-group {
+    display: flex;
+    flex-direction: column;
+    margin: 6px 20px 6px 8px;
+    max-width: 180px;
+}
+
+.aisle {
+    display: flex;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 6px;
+    color: #4c4c52;
+
+}
+
+.amount-unit {
+    display: flex;
+    margin-bottom: 6px;
+}
+
+.amount {
+    margin-right: 5px;
+}
+
+.title {
+    max-width: 90px
+}
+  
+.checked-ingredient {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: lightgray;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.check-box {
+    background-color: #232c2d;
+    position: absolute;
+    right: 20px
+}
+  
+  

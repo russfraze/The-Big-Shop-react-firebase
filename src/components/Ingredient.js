@@ -1,24 +1,31 @@
-import {useState} from 'react'
-import {FaCheckSquare} from 'react-icons/fa'
+import { useState } from 'react'
+import { FaCheckSquare } from 'react-icons/fa'
 
 
-function Ingredient({aisle, name, amount, unit, title}) {
+function Ingredient({ aisle, name, amount, unit, title }) {
 
     const [checked, setChecked] = useState(false)
 
     return (
-        <div className={checked ? 'checked-ingredient' : 'ingredient' }>
+        <div>
             
-            <p>aisle: {aisle}</p>
-            <h2>{name}</h2>
-            <p>{amount}</p>
-            <p>{unit}</p>
-            <p>{title}</p>
+            <p className='aisle'>aisle: {aisle}</p>
+            <div className={checked ? 'checked-ingredient' : 'ingredient'}>
+               
+                <div className='ing-group'>
+                    <h2 className='ing-name' >{name}</h2>
+                    <div className='amount-unit'>
+                        <p className='amount'>{amount}</p>
+                        <p>{unit}</p>
+                    </div>
+                </div>
+                <p className='title' >{title}</p>
 
-            <div className='shopList-buttons'>
-            <FaCheckSquare onClick={() => setChecked(!checked)} />
+
+                <FaCheckSquare className='check-box' onClick={() => setChecked(!checked)} />
+
+
             </div>
-        
         </div>
     )
 }

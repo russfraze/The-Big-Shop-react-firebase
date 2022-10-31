@@ -3,6 +3,7 @@ import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import { collection, getDocs, query } from 'firebase/firestore'
 import {db} from '../firebase.config'
 import RecipeTitleCard from '../components/RecipeTitleCard'
+import '../styles/recipeBook.css'
 
 function RecipeBook() {
     const [recipeBook, setRecipeBook] = useState([])

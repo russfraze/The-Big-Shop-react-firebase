@@ -4,6 +4,7 @@ import { getDocs, query, collection, deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import Ingredient from '../components/Ingredient'
 import { FirebaseError } from 'firebase/app'
+import '../styles/shoppingList.css'
 
 
 
