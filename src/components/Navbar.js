@@ -20,7 +20,7 @@ function Navbar() {
     console.log(navIsOpen)
 
     return (
-        <nav className='navigation' onClick={navIsOpen ? () => setNavIsOpen(!navIsOpen) : ''}>
+        <nav className='navigation' onClick={() => setNavIsOpen(!navIsOpen)}>
 
             <div className='logo'>
                 <h1>BIGSHOP</h1>
@@ -36,13 +36,13 @@ function Navbar() {
                 <ul>
 
                     <li onClick={() => navigate('/')}>
-                        <p className={pathMatchRoute('/') ? 'navbar-active' : ''} >Home</p>
+                        <p className={pathMatchRoute('/') ? 'navbar-active' : 'navbar-inactive'} >Home</p>
                     </li>
 
 
                     {!auth.currentUser &&
                         <li onClick={() => navigate('/register')}>
-                            <p className={pathMatchRoute('/register') ? 'navbar-active' : ''}>Register</p>
+                            <p className={pathMatchRoute('/register') ? 'navbar-active' : 'navbar-inactive'}>Register</p>
                         </li>}
 
                     {!auth.currentUser &&
@@ -52,17 +52,17 @@ function Navbar() {
 
                     {auth.currentUser &&
                         <li onClick={() => navigate('/recipe-book')}>
-                            <p className={pathMatchRoute('/recipe-book') ? 'navbar-active' : ''}>Recipe Book</p>
+                            <p className={pathMatchRoute('/recipe-book') ? 'navbar-active' : 'navbar-inactive'}>Recipe Book</p>
                         </li>}
 
                     {auth.currentUser &&
                         <li onClick={() => navigate('/shopping-list')}>
-                            <p className={pathMatchRoute('/shopping-list') ? 'navbar-active' : ''}>Shopping list</p>
+                            <p className={pathMatchRoute('/shopping-list') ? 'navbar-active' : 'navbar-inactive'}>Shopping list</p>
                         </li>}
 
 
                     <li onClick={() => navigate('/profile')}>
-                        <p className={pathMatchRoute('/profile') ? 'navbar-active' : ''}>Profile</p>
+                        <p className={pathMatchRoute('/profile') ? 'navbar-active' : 'navbar-inactive'}>Profile</p>
                     </li>
 
                 </ul>

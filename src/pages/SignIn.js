@@ -51,8 +51,9 @@ function SignIn() {
             <FaEye />
             <button>Submit</button>
         </form>
-        <Link to='/forgot-password'>Forgot password</Link>
-        <Link to='/sign-in' >Sign in</Link>
+        <Link className='text-link' to='/forgot-password'>
+        <p>Forgot password?</p>
+        </Link>
         </>
 
     

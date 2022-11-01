@@ -8,22 +8,25 @@ function Ingredient({ aisle, name, amount, unit, title }) {
 
     return (
         <div>
-            
+
             <p className='aisle'>aisle: {aisle}</p>
             <div className={checked ? 'checked-ingredient' : 'ingredient'}>
-               
-                <div className='ing-group'>
-                    <h2 className='ing-name' >{name}</h2>
-                    <div className='amount-unit'>
-                        <p className='amount'>{amount}</p>
-                        <p>{unit}</p>
+
+                <div className='ing-panel'>
+                    <div className='ing-div'>
+                        <div className='ing-info'>
+                            <h2 className='ing-name' >{name}</h2>
+                            <div className='amount-unit'>
+                                <p className='amount'>{amount}</p>
+                                <p className='unit'>{unit}</p>
+                            </div>
+                        </div>
+                        <p className='recipe-title' >{title}</p>
+                    </div>
+                    <div className='checkbox'>
+                        <FaCheckSquare className='check-box' onClick={() => setChecked(!checked)} />
                     </div>
                 </div>
-                <p className='title' >{title}</p>
-
-
-                <FaCheckSquare className='check-box' onClick={() => setChecked(!checked)} />
-
 
             </div>
         </div>
