@@ -47,7 +47,7 @@ function Navbar() {
 
                     {!auth.currentUser &&
                         <li onClick={() => navigate('/sign-in')}>
-                            <p className={pathMatchRoute('/sign-in') ? 'navbar-active' : ''}>Sign in</p>
+                            <p className={pathMatchRoute('/sign-in') ? 'navbar-active' : 'navbar-inactive'}>Sign in</p>
                         </li>}
 
                     {auth.currentUser &&

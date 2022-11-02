@@ -1,5 +1,6 @@
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
 import { useState } from 'react'
+import {Link} from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 function ForgotPassword() {
@@ -43,6 +44,10 @@ function ForgotPassword() {
                 <br></br>
                 <button>Send reset email</button>
             </form>
+
+            <Link to='/sign-in'>
+            <p>Sign in</p>
+            </Link>
         </div>
     )
 }

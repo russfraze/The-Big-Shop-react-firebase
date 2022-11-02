@@ -1,9 +1,10 @@
-import {useState} from 'react'
-import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
-import {Link, useNavigate} from 'react-router-dom'
+import { useState } from 'react'
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { Link, useNavigate } from 'react-router-dom'
 import { serverTimestamp, setDoc, doc } from 'firebase/firestore'
-import {db} from '../firebase.config'
-import {FaEye} from 'react-icons/fa'
+import { db } from '../firebase.config'
+import { FaEye } from 'react-icons/fa'
+import '../styles/register.css'
 
 
 function Register() {
@@ -14,7 +15,7 @@ function Register() {
 
     })
 
-    const {email, name, password} = formData
+    const { email, name, password } = formData
 
     const handleChange = (e) => {
         setFormData((prevState) => ({
@@ -25,7 +26,7 @@ function Register() {
 
     const navigate = useNavigate()
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
@@ -40,7 +41,7 @@ function Register() {
                 displayName: name
             })
             //Make a copy of the user data from state and delete the password
-            const userDataCopy = {...formData}
+            const userDataCopy = { ...formData }
             delete userDataCopy.password
             //add timestamp property with the timestamp function 
             userDataCopy.timestamp = serverTimestamp()
@@ -53,23 +54,39 @@ function Register() {
         } catch (error) {
             console.log(error)
         }
-      
+
     }
 
     return (
-        <>
-        <form onSubmit={handleSubmit}>
-            <input type='email' name='email' placeholder='enter email' onChange={handleChange}/>
-            <input type='text' name='name' placeholder='enter name' onChange={handleChange}/>
-            <input type='text' name='password' placeholder='enter password' onChange={handleChange}/>
-            <FaEye />
-            <button>Submit</button>
-        </form>
-        <Link to='/forgot-password'>Forgot password</Link>
-        <Link to='/sign-in' >Sign in</Link>
-        </>
+        <div className='container'>
 
-    
+            <form onSubmit={handleSubmit}>
+                <div className='register-inputs'>
+                    <input type='email' name='email' placeholder='enter email' onChange={handleChange} />
+                    <input type='text' name='name' placeholder='enter name' onChange={handleChange} />
+                    <input type='text' name='password' placeholder='enter password' onChange={handleChange} />
+
+                    <div className='register-buttons'>
+                        <FaEye />
+                        <div>
+                            <button className='button-main'>Submit</button>
+                        </div>
+                        <Link className='text-link' to='/forgot-password'>
+                            <p>Forgot password?</p>
+                        </Link>
+                        <Link className='text-link' to='/sign-in' >
+                            <p>Sign in</p>
+                        </Link>
+                    </div>
+                </div>
+
+            </form>
+
+
+
+        </div>
+
+
     )
 }
 

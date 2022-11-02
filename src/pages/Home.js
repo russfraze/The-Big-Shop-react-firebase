@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
 import RecipeTitleCard from '../components/RecipeTitleCard'
+import { FaSearch } from 'react-icons/fa'
+import '../styles/home.css'
 
 function Home() {
     const [recipes, setRecipes] = useState()
@@ -39,18 +41,23 @@ function Home() {
 
     return (
         <>
+            <h2>Search for recipes and stop ordering takeout</h2>
+
             <form onSubmit={handleSubmit}>
-                <h2>Homepage where you search for recipes</h2>
-                <input type='search' placeholder='search for recipes' onChange={handleChange} />
-                <button>search</button>
+                <div className='search-bar'>
+                    <input type='search' placeholder='search for recipes' onChange={handleChange} />
+                    <FaSearch className='search-icon' onClick={handleSubmit} />
+                </div>
             </form>
-            { recipes ? recipes.map((recipe) =>
+
+            {recipes ? recipes.map((recipe) =>
                 <RecipeTitleCard
                     image={recipe.image}
                     title={recipe.title}
                     id={recipe.id}
                     key={recipe.id}
-                />) : 'there aint none'}
+                />) : ''}
+
         </>
     )
 }

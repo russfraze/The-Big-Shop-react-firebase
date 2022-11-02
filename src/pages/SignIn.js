@@ -47,9 +47,9 @@ function SignIn() {
         <>
         <form onSubmit={handleSubmit}>
             <input type='email' name='email' placeholder='enter email' onChange={handleChange}/>
-            <input type='text' name='password' placeholder='enter password' onChange={handleChange}/>
+            <input type='password' name='password' placeholder='enter password' onChange={handleChange}/>
             <FaEye />
-            <button>Submit</button>
+            <button className='button-main'>Submit</button>
         </form>
         <Link className='text-link' to='/forgot-password'>
         <p>Forgot password?</p>
