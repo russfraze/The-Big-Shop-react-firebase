@@ -2,18 +2,13 @@
 
 
 .navigation {
-    min-height: 8vh;
-    background-color: #232c2d;
-    display: flex;
-    /* justify-content: space-around; */
-    align-items: center;
+  min-height: 8vh;
+  background-color: #02311f;
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
 }
   
-  
-.logo {
-    margin-left: 1rem;
-    color: #4c4c52
-}
   
 
   
@@ -22,11 +17,11 @@
 }
 
 .navbar-active {
-    color: #f4f4f4;
+    color: #94ff16;
 }
 
 .navbar-inactive {
-    color: #acacac;
+    color: #ffffff;
 }
   
 .navigation-menu ul {

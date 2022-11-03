@@ -4,8 +4,10 @@
 
 h1, h2, h3, p{
   font-family: Public Sans;
-  color: #33393c;
+  color: #ffffff;
 }
+
+
 
 .text-link {
   color: inherit;
@@ -13,7 +15,7 @@ h1, h2, h3, p{
 }
 
 
-/* navbar */
+
 
 * {
   margin: 0px;
@@ -24,8 +26,9 @@ h1, h2, h3, p{
 
 body {
   margin: 0px;
-  background-color: #f4f4f4;
 }
+
+
 
 
 /* .container {
@@ -35,6 +38,7 @@ body {
   align-items: center;
   width: 100%;
 } */
+
 
 
 .button-main {

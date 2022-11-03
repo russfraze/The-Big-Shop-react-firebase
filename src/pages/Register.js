@@ -66,6 +66,7 @@ function Register() {
                     <input type='text' name='name' placeholder='enter name' onChange={handleChange} />
                     <input type='text' name='password' placeholder='enter password' onChange={handleChange} />
 
+
                     <div className='register-buttons'>
                         <FaEye />
                         <div>

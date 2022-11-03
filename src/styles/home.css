@@ -1,9 +1,28 @@
+html .home {
+ background: url('../assets/HOME\ PAGE\ 03\ copy\ 4.png') no-repeat center fixed;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+}
+
+.home {
+    height: 100vh;
+}
+
+.logo {
+    height: 60px;
+    margin: 60px 0px 25px 0px 
+}
+
+.headline {
+    margin-bottom: 25px;
+} 
 
 .search-bar {
     display: flex;
     align-items: center;
     /* align-items: flex-start; */
-    
 }
 
 .search-icon {
@@ -15,4 +34,10 @@
 
 .search-icon:hover{
     opacity: 1;
+}
+
+.home-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

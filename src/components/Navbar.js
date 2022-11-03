@@ -22,9 +22,7 @@ function Navbar() {
     return (
         <nav className='navigation' onClick={() => setNavIsOpen(!navIsOpen)}>
 
-            <div className='logo'>
-                <h1>BIGSHOP</h1>
-            </div>
+           
 
             <div className='burger' onClick={() => setNavIsOpen(!navIsOpen)}>
                 <div className='line1'></div>

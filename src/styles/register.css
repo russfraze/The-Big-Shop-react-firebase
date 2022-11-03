@@ -10,3 +10,35 @@
     flex-direction: column;
     justify-content: flex-start;
 }
+
+
+.passwordInputDiv {
+    position: relative;
+}
+
+
+.passwordInput {
+    box-shadow: rgba(0, 0, 0, 0.11);
+    border: none;
+    background: #ffffff;
+    border-radius: 3rem;
+    height: 3rem;
+    width: 100%;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0 3rem;
+    font-size: 1rem;
+
+    background: url('../assets/eye.svg') #ffffff 2.5% center no-repeat;
+    
+    margin-bottom: 2rem;
+}
+
+.showPassword {
+    cursor: pointer;
+    /* position: absolute; */
+    top: -4%;
+    right: 1%;
+    padding: 1rem;
+    
+}
