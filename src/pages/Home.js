@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import RecipeTitleCard from '../components/RecipeTitleCard'
-import { FaSearch  } from 'react-icons/fa'
+import { FaSearch } from 'react-icons/fa'
 import '../styles/home.css'
 import Logo from '../assets/LOGO_V2.png'
 
@@ -41,31 +41,30 @@ function Home() {
     }
 
     return (
-        <div className='home'>
+        <div className={recipes ? 'home-results' : 'home'}>
 
             <div className='home-group'>
-            
-            <img className='logo' src={Logo}></img>
 
-            <h2 className='headline'>Search for recipes + stop ordering takeout</h2>
+                <img className='logo' src={Logo}></img>
 
-            <form onSubmit={handleSubmit}>
-                <div className='search-bar'>
-                    <input type='search' placeholder='search for recipes' onChange={handleChange} />
-                    <FaSearch className='search-icon' onClick={handleSubmit} />
-                </div>
-            </form>
+                <h2 className='headline'>Search for recipes + stop ordering takeout</h2>
+
+                <form className='search-form' onSubmit={handleSubmit}>
+                    <input className='search-input' type='search' placeholder='search...' onChange={handleChange} />
+                    <button className='search-button' type='submit'>Search</button>
+                </form>
             </div>
 
-            
+            <div className='results'>
 
-            {recipes ? recipes.map((recipe) =>
-                <RecipeTitleCard
-                    image={recipe.image}
-                    title={recipe.title}
-                    id={recipe.id}
-                    key={recipe.id}
-                />) : ''}
+                {recipes ? recipes.map((recipe) =>
+                    <RecipeTitleCard
+                        image={recipe.image}
+                        title={recipe.title}
+                        id={recipe.id}
+                        key={recipe.id}
+                    />) : ''}
+            </div>
 
         </div>
     )

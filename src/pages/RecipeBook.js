@@ -1,8 +1,9 @@
-import {useState, useEffect} from 'react'
-import {getAuth, onAuthStateChanged} from 'firebase/auth'
+import { useState, useEffect } from 'react'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { collection, getDocs, query } from 'firebase/firestore'
-import {db} from '../firebase.config'
+import { db } from '../firebase.config'
 import RecipeTitleCard from '../components/RecipeTitleCard'
+import Logo from '../assets/LOGO_V2.png'
 import '../styles/recipeBook.css'
 
 function RecipeBook() {
@@ -22,7 +23,7 @@ function RecipeBook() {
     //     })
     // },[])
 
-    useEffect(() =>{
+    useEffect(() => {
 
         const fetchRecipeBook = async (uid) => {
             try {
@@ -49,20 +50,28 @@ function RecipeBook() {
         }
         fetchRecipeBook(uid)
 
-    },[])
+    }, [])
 
     console.log(recipeBook)
 
     return (
-        <div>
-            <h1>Recipe Book</h1>
-            {recipeBook ? recipeBook.map((recipe) => 
-            <RecipeTitleCard 
-            title={recipe.title} 
-            image={recipe.image} 
-            id={recipe.id} 
-            key={recipe.id}/
-            >) : ''}
+        <div className='rb' >
+            <div className='rb-group'>
+
+                <img className='logo-rb' src={Logo}></img>
+
+                <h2 className='headline-rb'>Recipe Book</h2>
+
+            </div>
+            <div className='book-div'>
+                {recipeBook ? recipeBook.map((recipe) =>
+                    <RecipeTitleCard
+                        title={recipe.title}
+                        image={recipe.image}
+                        id={recipe.id}
+                        key={recipe.id}
+                    />) : ''}
+            </div>
         </div>
     )
 }

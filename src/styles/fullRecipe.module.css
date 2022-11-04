@@ -1,0 +1,90 @@
+
+
+h1, h2, h3, p{
+    font-family: Syne;
+    color: #02311f;
+}
+
+h1{
+    font-size: 65px;
+    font-weight: 500;
+}
+
+.fullRecipe {
+    display: flex;
+    flex-direction: column;
+    margin: 70px 370px 20px 370px;
+    flex-wrap: wrap;
+}
+
+.imageGroup {
+    display: flex;
+    margin-bottom: 45px;
+    max-height: 250px;
+}
+
+
+.image {
+    display: flex;
+    border-radius: 20px;
+    max-height: 250px;
+    /* max-width: 100%; */
+    align-self: start;
+    margin: 0 45px 0 0 
+}
+
+.titleServings{
+    max-width: 450px;
+}
+
+
+.ingDiv{
+    margin-bottom: 20px;
+}
+
+.line{
+    height: 1px;
+    width: 100%;
+    background-color: #02311f;
+    margin: 20px 0 20px 0
+}
+
+
+
+.instDiv {
+    margin-bottom: 20px;
+}
+
+.inst-label {
+    color: #02311f;
+}
+
+.macroDiv {
+    margin-bottom: 20px;
+}
+.add-div {
+    display: flex;
+    margin-top: 20px;
+}
+
+.btnDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn {
+    background-color: #02311f;;
+    color: #ffffff;
+    padding: 0 20px 0 20px;
+    height: 30px;
+    font-family: Public Sans;
+    font-weight: 200;
+    border-radius: 50px;
+    border-style: solid;
+    border: none;
+    margin: 20px 15px 20px 15px; 
+    font-family: Syne;
+    font-size: 12px;
+}

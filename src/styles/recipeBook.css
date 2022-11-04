@@ -1,6 +1,29 @@
 
 
+.book-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 70px 70px 20px 70px;
+}
 
 .recipe-link {
     text-decoration: none;
+}
+
+.rb-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.logo-rb {
+    height: 60px;
+    margin: 60px 0px 25px 0px 
+}
+
+.headline-rb {
+    margin-bottom: 25px;
+    color: #02311f;
 }

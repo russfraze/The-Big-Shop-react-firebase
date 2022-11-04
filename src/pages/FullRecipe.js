@@ -1,11 +1,12 @@
-import {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
-import {getAuth} from 'firebase/auth'
-import {collection, addDoc} from 'firebase/firestore'
-import {db} from '../firebase.config'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { getAuth } from 'firebase/auth'
+import { collection, addDoc } from 'firebase/firestore'
+import { db } from '../firebase.config'
 import axios from 'axios'
-import {FaList, FaBookmark} from 'react-icons/fa'
-import {toast} from 'react-toastify'
+import { FaList, FaBookmark } from 'react-icons/fa'
+import fullRecipe from '../styles/fullRecipe.module.css'
+import { toast } from 'react-toastify'
 
 
 
@@ -21,15 +22,15 @@ function FullRecipe() {
         userId: auth.currentUser.uid,
     })
 
-    const {name, userId} = userData
+    const { name, userId } = userData
 
     const [recipeDetails, setRecipeDetails] = useState({
         id: recipeId,
     })
 
-    const {id, title, image, ingredients, instructions, calories, protein, carbs, fat, servings} = recipeDetails
+    const { id, title, image, ingredients, instructions, calories, protein, carbs, fat, servings } = recipeDetails
 
-    useEffect(() =>{
+    useEffect(() => {
         const getRecipeDetails = () => {
             axios({
                 method: 'get',
@@ -90,9 +91,9 @@ function FullRecipe() {
         }
 
         getRecipeDetails()
-    },[])
+    }, [])
 
-    const addBook = async() => {
+    const addBook = async () => {
         await addDoc(collection(db, `users/${userId}/recipebook`), {
             id: id,
             title: title,
@@ -101,31 +102,51 @@ function FullRecipe() {
         toast.success('Recipe added to recipe book.')
     }
 
-    const addShop = async() => {
+    const addShop = async () => {
         await addDoc(collection(db, `users/${userId}/shoppinglist`), {
             title: title,
             ingredients: ingredients,
         })
         toast.success('Ingredients added to shopping list.')
     }
-    
+
     return (
-        <div>
-            <h1>{title}</h1>
-            <img src={image}></img>
-            <h3>Ingredients</h3>
-            <p>{ingredients ? ingredients.map((ingredient) => ingredient.original + ' ' ) : ''}</p>
-            <h3>Instructions</h3>
-            {`${instructions}`}
-            <h3>Macro Nutrition</h3>
-            <p>Calories: {calories}</p>
-            <p>Protein: {protein}</p>
-            <p>Carbs: {carbs}</p>
-            <p>Fat: {fat}</p>
-            <h3>Servings: {servings}</h3>
-            <div>
-            <FaList size="40px" onClick={addShop} />add ingredients to shopping list
-            <FaBookmark size="40px" onClick={addBook} />add to recipe book
+        <div className={fullRecipe.fullRecipe} >
+
+            <div className={fullRecipe.imageGroup}>
+                <img className={fullRecipe.image} src={image}></img>
+                <div className={fullRecipe.titleServings}>
+                    <h1>{title}</h1>
+                    <h3>Servings: {servings}</h3>
+                </div>
+            </div>
+
+
+            <div className={fullRecipe.ingDiv} >
+                <h3>Ingredients</h3>
+                <div className={fullRecipe.line}></div>
+                <p className='full-ingredients' >{ingredients ? ingredients.map((ingredient) => ingredient.original + ' ') : ''}</p>
+            </div>
+
+            <div className={fullRecipe.instDiv} >
+                <h3 className='inst-label' >Instructions</h3>
+                <div className={fullRecipe.line}></div>
+                <p>{`${instructions}`}</p>
+            </div>
+
+            <div className={fullRecipe.marcoDiv}>
+                <h3>Macro Nutrition</h3>
+                <div className={fullRecipe.line}></div>
+                <p>Calories: {calories}</p>
+                <p>Protein: {protein}</p>
+                <p>Carbs: {carbs}</p>
+                <p>Fat: {fat}</p>
+            </div>
+            <div className={fullRecipe.btnDiv}>
+                <div className='add-div' >
+                    <button className={fullRecipe.btn} onClick={addBook}>Add to recipe book</button>
+                    <button className={fullRecipe.btn} onClick={addShop}>Add ingredients to shopping list</button>
+                </div>
             </div>
         </div>
     )

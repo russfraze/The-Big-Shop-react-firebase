@@ -1,0 +1,14 @@
+.recipe-title-card{
+    margin: 0px 13px 18px 13px;
+}
+
+.recipe-title-image {
+    border-radius: 20px;
+}
+
+.recipe-card-title{
+    color: #02311f;
+    font-weight: 200;
+    font-size: 20px;
+    max-width: 285px;
+}
