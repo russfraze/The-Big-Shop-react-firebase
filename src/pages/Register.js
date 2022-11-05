@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { serverTimestamp, setDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import { FaEye } from 'react-icons/fa'
-import '../styles/register.css'
+import register from '../styles/register.module.css'
 
 
 function Register() {
@@ -58,24 +58,26 @@ function Register() {
     }
 
     return (
-        <div className='container'>
+        <div className={register.registerDiv}>
 
-            <form onSubmit={handleSubmit}>
-                <div className='register-inputs'>
+            <h1 className={register.registerHead}>Register</h1>
+
+            <form className={register.registerForm} onSubmit={handleSubmit}>
+                <div className={register.registerInputs}>
                     <input type='email' name='email' placeholder='enter email' onChange={handleChange} />
                     <input type='text' name='name' placeholder='enter name' onChange={handleChange} />
                     <input type='text' name='password' placeholder='enter password' onChange={handleChange} />
 
 
-                    <div className='register-buttons'>
+                    <div className={register.registerButtons}>
                         <FaEye />
                         <div>
                             <button className='button-main'>Submit</button>
                         </div>
-                        <Link className='text-link' to='/forgot-password'>
+                        <Link className={register.textLink} to='/forgot-password'>
                             <p>Forgot password?</p>
                         </Link>
-                        <Link className='text-link' to='/sign-in' >
+                        <Link className={register.textLink} to='/sign-in' >
                             <p>Sign in</p>
                         </Link>
                     </div>

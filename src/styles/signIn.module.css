@@ -1,0 +1,31 @@
+html .signInDiv {
+    background: url('../assets/HOME\ PAGE\ 03\ copy\ 6.png') no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.signHead{
+    font-size: 25px;
+}
+
+
+.signInDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.signInForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 35px 30px 45px 30px;
+}
+
+.signInInputs {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import RecipeTitleCard from '../components/RecipeTitleCard'
 import { FaSearch } from 'react-icons/fa'
-import '../styles/home.css'
+import home from '../styles/home.module.css'
 import Logo from '../assets/LOGO_V2.png'
 
 function Home() {
     const [recipes, setRecipes] = useState()
     const [searchTerms, setSearchTerms] = useState()
+    const [testThis, setTestThis] = useState(home.home)
 
     const handleChange = (e) => {
         setSearchTerms(e.target.value)
@@ -37,25 +38,46 @@ function Home() {
             console.error(error)
         })
 
-
     }
 
-    return (
-        <div className={recipes ? 'home-results' : 'home'}>
 
-            <div className='home-group'>
+    useEffect(() => {
+
+        const resultClass = () => {
+            var classAss = ''
+            if(recipes) {
+                classAss = home.homeResults
+                setTestThis(classAss)
+            } else {
+                classAss = home.home
+            }
+
+        
+
+        
+        }
+
+        resultClass()
+       
+    }, [recipes])
+
+    
+    return (
+        <div className={ testThis }>
+
+            <div className={home.homeGroup}>
 
                 <img className='logo' src={Logo}></img>
 
-                <h2 className='headline'>Search for recipes + stop ordering takeout</h2>
+                <h2 className={home.headline}>Search for recipes + stop ordering takeout</h2>
 
-                <form className='search-form' onSubmit={handleSubmit}>
-                    <input className='search-input' type='search' placeholder='search...' onChange={handleChange} />
-                    <button className='search-button' type='submit'>Search</button>
+                <form className={home.searchForm} onSubmit={handleSubmit}>
+                    <input className={home.searchInput} type='search' placeholder='search...' onChange={handleChange} />
+                    <button className={home.searchButton} type='submit'>Search</button>
                 </form>
             </div>
 
-            <div className='results'>
+            <div className={home.results}>
 
                 {recipes ? recipes.map((recipe) =>
                     <RecipeTitleCard

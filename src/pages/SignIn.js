@@ -1,7 +1,8 @@
-import {useState} from 'react'
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
-import {Link, useNavigate} from 'react-router-dom'
-import {FaEye} from 'react-icons/fa'
+import { useState } from 'react'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { Link, useNavigate } from 'react-router-dom'
+import { FaEye } from 'react-icons/fa'
+import signIn from '../styles/signIn.module.css'
 
 
 function SignIn() {
@@ -11,7 +12,7 @@ function SignIn() {
 
     })
 
-    const {email, password} = formData
+    const { email, password } = formData
 
     const handleChange = (e) => {
         setFormData((prevState) => ({
@@ -22,7 +23,7 @@ function SignIn() {
 
     const navigate = useNavigate()
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
@@ -32,31 +33,36 @@ function SignIn() {
             const userCredential = await signInWithEmailAndPassword(auth, email, password)
             //get the user
             const user = userCredential.user
-        
-            if(userCredential.user){
+
+            if (userCredential.user) {
                 navigate('/')
             }
 
         } catch (error) {
             console.log(error)
         }
-      
+
     }
 
     return (
-        <>
-        <form onSubmit={handleSubmit}>
-            <input type='email' name='email' placeholder='enter email' onChange={handleChange}/>
-            <input type='password' name='password' placeholder='enter password' onChange={handleChange}/>
-            <FaEye />
-            <button className='button-main'>Submit</button>
-        </form>
-        <Link className='text-link' to='/forgot-password'>
-        <p>Forgot password?</p>
-        </Link>
-        </>
+        <div className={signIn.signInDiv}>
 
-    
+            <h1 className={signIn.signHead}>Sign In</h1>
+
+            <div className={signIn.signInForm}>
+                <form className={signIn.signInInputs} onSubmit={handleSubmit}>
+                    <input type='email' name='email' placeholder='enter email' onChange={handleChange} />
+                    <input type='password' name='password' placeholder='enter password' onChange={handleChange} />
+                    <FaEye />
+                    <button className='button-main'>Submit</button>
+                </form>
+
+                <Link className='text-link' to='/forgot-password'>
+                    <p>Forgot password?</p>
+                </Link>
+            </div>
+        </div>
+
     )
 }
 

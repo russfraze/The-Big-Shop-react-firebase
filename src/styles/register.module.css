@@ -1,11 +1,45 @@
-.register-inputs{
+
+html .registerDiv {
+    background: url('../assets/HOME\ PAGE\ 03\ copy\ 7.png') no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.registerHead{
+    color: #ffffff;
+    font-size: 25px;
+}
+
+p {
+    color: #02311f;
+    margin: 10px 0 0 0;
+}
+
+
+.registerDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.registerForm {
+    background-color: #ffffff;
+    padding: 35px 30px 45px 30px;
+
+}
+
+
+.registerInputs{
     display: flex;
     flex-direction: column;
     align-items: center;
     /* width: 265px; */
 }
 
-.register-buttons{
+.registerButtons{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -42,3 +76,8 @@
     padding: 1rem;
     
 }
+
+.textLink {
+    color: #ffffff;
+    text-decoration: none;
+  }

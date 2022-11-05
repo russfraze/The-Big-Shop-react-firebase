@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { getAuth } from 'firebase/auth'
-import '../styles/navbar.css'
+import './styles/navbar.css'
 
 function Navbar() {
     const [navIsOpen, setNavIsOpen] = useState(false)
@@ -22,12 +22,11 @@ function Navbar() {
     return (
         <nav className='navigation' onClick={() => setNavIsOpen(!navIsOpen)}>
 
-           
 
             <div className='burger' onClick={() => setNavIsOpen(!navIsOpen)}>
-                <div className='line1'></div>
-                <div className='line2'></div>
-                <div className='line3'></div>
+                <div className='line-1'></div>
+                <div className='line-2'></div>
+                <div className='line-3'></div>
             </div>
 
             <div className={navIsOpen ? 'navigation-menu expanded' : 'navigation-menu'}>

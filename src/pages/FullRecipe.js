@@ -4,7 +4,6 @@ import { getAuth } from 'firebase/auth'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import axios from 'axios'
-import { FaList, FaBookmark } from 'react-icons/fa'
 import fullRecipe from '../styles/fullRecipe.module.css'
 import { toast } from 'react-toastify'
 

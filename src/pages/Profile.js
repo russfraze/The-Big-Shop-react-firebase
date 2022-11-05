@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { getAuth, updateProfile } from 'firebase/auth'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { updateDoc, doc } from 'firebase/firestore'
-import {db} from '../firebase.config'
+import { db } from '../firebase.config'
+import profile from '../styles/profile.module.css'
 import { FaSignOutAlt } from 'react-icons/fa'
 
 function Profile() {
@@ -28,13 +29,13 @@ function Profile() {
     function handleChange(e) {
         setUserData((prevState) => ({
             ...prevState,
-            [e.target.id]: e.target.value 
+            [e.target.id]: e.target.value
         }))
     }
 
-    const onSubmit = async() => {
+    const onSubmit = async () => {
         try {
-            if (name !== auth.currentUser.displayName){
+            if (name !== auth.currentUser.displayName) {
                 await updateProfile(auth.currentUser, {
                     displayName: name
                 })
@@ -45,18 +46,19 @@ function Profile() {
                 })
             }
         } catch (error) {
-            
+
         }
     }
 
     return (
-        <div>
-            Profile Page
-            <h2>Welcome {name}</h2>
+        <div className={profile.profileDiv}>
+            <h1>Profile</h1>
 
-            <h3>Personal details</h3>
+            <div className={profile.detailsPanel}>
 
-            <div className='details-form'>
+                <h2>Welcome {name}</h2>
+
+                <h3>Personal details</h3>
                 <form>
                     <input
                         className={!changeDetails ? 'input-active' : 'input-disabled'}
@@ -79,10 +81,15 @@ function Profile() {
                     changeDetails && onSubmit()
                     setChangeDetails((prevState) => !prevState)
                 }}>{changeDetails ? 'done' : 'change'}</p>
+
+                <div className={profile.signOut} >
+                    <FaSignOutAlt onClick={logOut} />
+                    <p>Sign out</p>
+                </div>
+
             </div>
 
 
-            <FaSignOutAlt onClick={logOut} />Sign Out
         </div>
     )
 }
