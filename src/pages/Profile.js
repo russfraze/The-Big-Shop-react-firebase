@@ -59,7 +59,7 @@ function Profile() {
                 <h2>Welcome {name}</h2>
 
                 <h3>Personal details</h3>
-                <form>
+                <form className={profile.profileInputs}>
                     <input
                         className={!changeDetails ? 'input-active' : 'input-disabled'}
                         type='text'

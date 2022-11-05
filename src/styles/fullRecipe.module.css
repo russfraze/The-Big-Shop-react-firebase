@@ -6,15 +6,23 @@ h1, h2, h3, p{
 }
 
 h1{
-    font-size: 65px;
+    font-size: 4.5vh;
     font-weight: 500;
+}
+
+.fullRecipeDiv {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 .fullRecipe {
     display: flex;
     flex-direction: column;
+    justify-items: center;
     margin: 70px 370px 20px 370px;
     flex-wrap: wrap;
+    max-width: 850px;
 }
 
 .imageGroup {
@@ -35,6 +43,7 @@ h1{
 
 .titleServings{
     max-width: 450px;
+    
 }
 
 
@@ -62,8 +71,9 @@ h1{
 .macroDiv {
     margin-bottom: 20px;
 }
-.add-div {
+.addDiv {
     display: flex;
+    flex-direction: row;
     margin-top: 20px;
 }
 
@@ -87,4 +97,5 @@ h1{
     margin: 20px 15px 20px 15px; 
     font-family: Syne;
     font-size: 12px;
+    cursor: pointer;
 }

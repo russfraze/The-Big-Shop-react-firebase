@@ -110,6 +110,7 @@ function FullRecipe() {
     }
 
     return (
+        <div className={fullRecipe.fullRecipeDiv}> 
         <div className={fullRecipe.fullRecipe} >
 
             <div className={fullRecipe.imageGroup}>
@@ -142,11 +143,12 @@ function FullRecipe() {
                 <p>Fat: {fat}</p>
             </div>
             <div className={fullRecipe.btnDiv}>
-                <div className='add-div' >
+                <div className='addDiv' >
                     <button className={fullRecipe.btn} onClick={addBook}>Add to recipe book</button>
                     <button className={fullRecipe.btn} onClick={addShop}>Add ingredients to shopping list</button>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

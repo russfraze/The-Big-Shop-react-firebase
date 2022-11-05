@@ -9,7 +9,20 @@ html .profileDiv {
 
 
 h1 {
-    margin: 20px 0 45px 0
+    margin: 20px 0 45px 0;
+    font-size: 25px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+input {
+    margin-bottom: 7px;
 }
 
 .profileDiv{
@@ -23,11 +36,20 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #ffffff;
+    padding: 30px 25px 45px 25px;
+}
+
+.profileInputs{
+    display: flex;
+    flex-direction: column;
 }
 
 
 
 .signOut{
     display: flex;
-    
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
 }
