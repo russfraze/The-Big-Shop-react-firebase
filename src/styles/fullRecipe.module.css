@@ -8,6 +8,7 @@ h1, h2, h3, p{
 h1{
     font-size: 4.5vh;
     font-weight: 500;
+    margin-top: 0px;
 }
 
 .fullRecipeDiv {
@@ -22,14 +23,15 @@ h1{
     justify-items: center;
     margin: 70px 370px 20px 370px;
     flex-wrap: wrap;
-    max-width: 850px;
+    max-width: 600px;
 }
 
 .imageGroup {
     display: flex;
     margin-bottom: 45px;
-    max-height: 250px;
+    /* max-height: 250px; */
 }
+
 
 
 .image {
@@ -41,7 +43,7 @@ h1{
     margin: 0 45px 0 0 
 }
 
-.titleServings{
+.title{
     max-width: 450px;
     
 }
@@ -49,6 +51,11 @@ h1{
 
 .ingDiv{
     margin-bottom: 20px;
+}
+
+.ingLabelServ {
+    display: flex;
+    justify-content: space-between;
 }
 
 .line{
@@ -70,6 +77,11 @@ h1{
 
 .macroDiv {
     margin-bottom: 20px;
+}
+
+.macroList {
+    display: flex;
+    justify-content: space-between;
 }
 .addDiv {
     display: flex;
@@ -98,4 +110,87 @@ h1{
     font-family: Syne;
     font-size: 12px;
     cursor: pointer;
+}
+
+
+
+
+
+
+@media screen and (max-width: 830px) {
+    .imageGroup {
+        display: flex;
+        margin-bottom: 45px;
+        flex-direction: column;
+
+    }
+    
+    
+    
+    .image {
+        display: flex;
+        border-radius: 20px;
+        /* max-height: 250px; */
+        /* max-width: 100%; */
+        align-self: start;
+        margin: 0 45px 0 0 
+    }
+
+    .title{
+        max-width: 450px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h1{
+        margin-top: 20px;
+    }
+
+
+
+    .ingDiv{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .ingLabelServ {
+        display: flex;
+    }
+
+    .instDiv {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    
+  
+}
+
+
+@media screen and (max-width: 550px) {
+
+    .fullRecipeDiv {
+       margin: 0 0px 0 0px;
+       padding: 0 10px 0 10px;
+    }
+
+    .image {
+        width: 350px;
+        margin: 0 0px 0 0px 
+    }
+
+
+    .fullRecipe {
+        
+        margin: 70px 0px 20px 0px;
+        
+       
+    }
+    .btnDiv {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    }
 }

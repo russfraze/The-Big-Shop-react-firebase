@@ -110,45 +110,49 @@ function FullRecipe() {
     }
 
     return (
-        <div className={fullRecipe.fullRecipeDiv}> 
-        <div className={fullRecipe.fullRecipe} >
+        <div className={fullRecipe.fullRecipeDiv}>
+            <div className={fullRecipe.fullRecipe} >
 
-            <div className={fullRecipe.imageGroup}>
-                <img className={fullRecipe.image} src={image}></img>
-                <div className={fullRecipe.titleServings}>
-                    <h1>{title}</h1>
-                    <h3>Servings: {servings}</h3>
+                <div className={fullRecipe.imageGroup}>
+                    <img className={fullRecipe.image} src={image}></img>
+                    <div className={fullRecipe.title}>
+                        <h1>{title}</h1>
+                    </div>
                 </div>
-            </div>
 
 
-            <div className={fullRecipe.ingDiv} >
-                <h3>Ingredients</h3>
-                <div className={fullRecipe.line}></div>
-                <p className='full-ingredients' >{ingredients ? ingredients.map((ingredient) => ingredient.original + ' ') : ''}</p>
-            </div>
+                <div className={fullRecipe.ingDiv} >
+                    <div className={fullRecipe.ingLabelServ}>
+                        <h3>Ingredients</h3>
+                        <h3>Servings: {servings}</h3>
+                    </div>
+                    <div className={fullRecipe.line}></div>
+                    <p className='full-ingredients' >{ingredients ? ingredients.map((ingredient) => ingredient.original + ' ') : ''}</p>
+                </div>
 
-            <div className={fullRecipe.instDiv} >
-                <h3 className='inst-label' >Instructions</h3>
-                <div className={fullRecipe.line}></div>
-                <p>{`${instructions}`}</p>
-            </div>
+                <div className={fullRecipe.instDiv} >
+                    <h3 className='inst-label' >Instructions</h3>
+                    <div className={fullRecipe.line}></div>
+                    <p>{`${instructions}`}</p>
+                </div>
 
-            <div className={fullRecipe.marcoDiv}>
-                <h3>Macro Nutrition</h3>
-                <div className={fullRecipe.line}></div>
-                <p>Calories: {calories}</p>
-                <p>Protein: {protein}</p>
-                <p>Carbs: {carbs}</p>
-                <p>Fat: {fat}</p>
-            </div>
-            <div className={fullRecipe.btnDiv}>
-                <div className='addDiv' >
+                <div className={fullRecipe.marcoDiv}>
+                    <h3>Macro Nutrition</h3>
+                    <div className={fullRecipe.line}></div>
+                    <div className={fullRecipe.macroList}>
+                        <p>Calories: {calories}</p>
+                        <p>Protein: {protein}</p>
+                        <p>Carbs: {carbs}</p>
+                        <p>Fat: {fat}</p>
+                    </div>
+                </div>
+                <div className={fullRecipe.btnDiv}>
+
                     <button className={fullRecipe.btn} onClick={addBook}>Add to recipe book</button>
                     <button className={fullRecipe.btn} onClick={addShop}>Add ingredients to shopping list</button>
+
                 </div>
             </div>
-        </div>
         </div>
     )
 }
