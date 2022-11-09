@@ -45,7 +45,7 @@ function FullRecipe() {
                     id: response.data.id,
                     title: response.data.title,
                     image: response.data.image,
-                    instructions: response.data.instructions,
+                    instructions: response.data.analyzedInstructions[0].steps,
                     ingredients: response.data.extendedIngredients,
                     servings: response.data.servings
                 }))
@@ -127,13 +127,32 @@ function FullRecipe() {
                         <h3>Servings: {servings}</h3>
                     </div>
                     <div className={fullRecipe.line}></div>
-                    <p className='full-ingredients' >{ingredients ? ingredients.map((ingredient) => ingredient.original + ' ') : ''}</p>
+
+                    <ul className={fullRecipe.ingUl}>
+                        {ingredients ? ingredients.map((ingredient) => (
+                            <li className={fullRecipe.ingLi}>
+                                <p>{ingredient.original + ' '}</p>
+                            </li>
+                        )) : ''}
+                    </ul>
                 </div>
 
                 <div className={fullRecipe.instDiv} >
                     <h3 className='inst-label' >Instructions</h3>
                     <div className={fullRecipe.line}></div>
-                    <p>{`${instructions}`}</p>
+                    {/* <p>{`${instructions}`}</p> */}
+
+                    <ol className={fullRecipe.instOl}>
+
+                        {instructions ? instructions.map((step) => (
+                            <li>
+                                <p>{step.step}</p>
+                            </li>)) : ''}
+
+                    </ol>
+
+
+
                 </div>
 
                 <div className={fullRecipe.marcoDiv}>

@@ -23,6 +23,7 @@ html .home {
 .headline {
     margin-bottom: 25px;
     color: #ffffff;
+    font-size: 20px;
 } 
 
 .searchBar {
@@ -93,3 +94,15 @@ html .home {
     cursor: pointer;
     opacity: 0.7; 
 }
+
+
+
+
+@media screen and (max-width: 550px) {
+
+    .headline {
+      width: 80%;
+      text-align: center;
+    } 
+}
+
