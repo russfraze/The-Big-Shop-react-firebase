@@ -2,7 +2,10 @@
 /* Shopping List page */
 /* includes styles for ingredient component */
 
-
+/* .sl-div{
+    display: flex;
+    flex-direction: column;
+} */
 
 p {
     font-size: 12px;
@@ -10,86 +13,66 @@ p {
     /* color: #f4f4f4; */
 }
 
-
-.checked-ingredient {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    background-color: lightgray;
-    margin: 5px;
-    border-radius: 10px;
-}
-
-.ingredient{
-    background-color: #4c4c52;
-    margin: 1px 5px 8px 5px;
-    border-radius: 10px;
-}
-
-.ing-panel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.ing-div {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-}
-  
-
-
-.ing-info {
+.sl-page-div{
     display: flex;
     flex-direction: column;
-    margin: 6px 26px 6px 8px;
-    max-width: 180px;
+    margin: 0 0px 20px 0px;
+    width: 600px;
+    
 }
 
-.ing-name {
-    color: #f4f4f4;
-    font-size: 20px;
-}
-
-.amount-unit {
+.sl-group{
     display: flex;
-    margin-bottom: 6px;
-    color: #f4f4f4;
-
+    flex-direction: row;
+    /* align-items: flex-start; */
+    align-items: center;
+    margin: 0 0 17px 0px
 }
 
-.amount {
-    margin-right: 5px;
-    color: #f4f4f4;
-}
-
-.unit {
-    color: #f4f4f4;
-}
-
-
-
-.aisle {
+.sl-shape{
     display: flex;
-    margin-left: 8px;
-    margin-right: 8px;
-    margin-top: 6px;
-    color: #4c4c52;
-
+    flex-direction: column;
+    /* align-items: flex-start; */
+    border: solid 1px black;
+    border-radius: 10px;
+    
 }
 
-.recipe-title {
-    max-width: 90px;
-    color: #f4f4f4;
-
+.sl-aisle-div{
+    display: flex;
+    flex-direction: row;
 }
 
-.check-box {
-    background-color: #232c2d;
-    margin-right: 8px;
+.sl-aisle-title{
+    
+    padding: 10px 10px 7px 10px;
+}
+
+.sl-line-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 10px;
+    flex-grow: 1;
 }
   
+
+.sl-line{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    height: 1px;
+    background-color: black;
+} 
+
+
+.sl-ingList-div {
+    margin-bottom: 17px;
+}
+
+
+
+
 
 
 

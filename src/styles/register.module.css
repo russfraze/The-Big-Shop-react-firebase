@@ -12,9 +12,10 @@ html .registerDiv {
     font-size: 25px;
 }
 
+/* fix this margin top instead of global p style  */
 p {
     color: #02311f;
-    margin: 10px 0 0 0;
+    /* margin: 10px 0 0 0; */
 }
 
 

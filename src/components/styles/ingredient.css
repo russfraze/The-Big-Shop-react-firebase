@@ -1,0 +1,26 @@
+
+
+.ingredient {
+    
+}
+
+
+
+.checked-ingredient p {
+    color: lightgray;
+    text-decoration-line: line-through;
+}
+
+.checked-box {
+    color: lightgray;
+}
+
+.checkbox {
+    color: #02311f;
+}
+
+.ing-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

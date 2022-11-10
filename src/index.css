@@ -27,7 +27,10 @@ body {
   margin: 0px;
 }
 
-
+.center-container {
+  display: flex;
+  justify-content: center;
+}
 
 .logo {
   height: 60px;
@@ -46,6 +49,23 @@ body {
   border-radius: 50px;
   border-style: solid;
   border: none;
+}
+
+
+.btn {
+  background-color: #02311f;;
+  color: #ffffff;
+  padding: 0 20px 0 20px;
+  height: 30px;
+  font-family: Public Sans;
+  font-weight: 200;
+  border-radius: 50px;
+  border-style: solid;
+  border: none;
+  margin: 20px 15px 20px 15px; 
+  font-family: Syne;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 
