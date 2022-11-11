@@ -6,22 +6,12 @@ import RecipeTitleCard from '../components/RecipeTitleCard'
 import Logo from '../assets/LOGO_V2.png'
 import '../styles/recipeBook.css'
 
-function RecipeBook() {
+function RecipeBook({liftUsersRecipes}) {
     const [recipeBook, setRecipeBook] = useState([])
 
     const auth = getAuth()
     const user = auth.currentUser
     const uid = user.uid
-    // useEffect(() => {
-    //     onAuthStateChanged(auth, (user) => {
-    //         if (user) {
-    //             // user is signed in
-    //             const uid = user.uid
-    //         } else {
-    //             // user is signed out
-    //         }
-    //     })
-    // },[])
 
     useEffect(() => {
 
@@ -43,7 +33,7 @@ function RecipeBook() {
                     savedRecipes.push(doc.data())
                     setRecipeBook(savedRecipes)
                 })
-
+                liftUsersRecipes(savedRecipes)
             } catch (error) {
                 console.log(error)
             }

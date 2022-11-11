@@ -32,7 +32,7 @@ function Home() {
         }
 
         axios.request(results).then((response) => {
-            // console.log(response.data)
+            console.log(response.data.results)
             setRecipes(response.data.results)
         }).catch((error) => {
             console.error(error)

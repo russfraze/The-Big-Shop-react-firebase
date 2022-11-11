@@ -10,7 +10,7 @@ import { toast } from 'react-toastify'
 
 
 
-function FullRecipe() {
+function FullRecipe({savedRecipes}) {
     const auth = getAuth()
     const params = useParams()
 
@@ -27,7 +27,11 @@ function FullRecipe() {
         id: recipeId,
     })
 
+    const [inSaved, setInSaved] = useState(null)
+
     const { id, title, image, ingredients, instructions, calories, protein, carbs, fat, servings } = recipeDetails
+
+    
 
     useEffect(() => {
         const getRecipeDetails = () => {
@@ -49,14 +53,6 @@ function FullRecipe() {
                     ingredients: response.data.extendedIngredients,
                     servings: response.data.servings
                 }))
-                // this.recipes_info = response.data
-                // recipe.details = response.data
-                // recipe.has_details = true
-                // recipe.ingredients = response.data.extendedIngredients
-                // recipe.instructions = response.data.instructions
-                // console.log(this.recipes_info)
-                // console.log(recipe.ingredients)
-                // console.log(recipe.instructions)
             })
 
             //second request for the nutritional info
@@ -77,15 +73,6 @@ function FullRecipe() {
                     carbs: response.data.carbs,
                     fat: response.data.fat,
                 }))
-                // console.log(response.data.calories)
-                // this.recipes_info = response.data
-
-                // recipe.nutrition.calories = data.calories
-                // recipe.nutrition.protein = data.protein
-                // recipe.nutrition.carbs = data.carbs
-                // recipe.nutrition.fat = data.fat
-                // console.log(recipe.nutrition)
-
             })
         }
 
@@ -108,6 +95,22 @@ function FullRecipe() {
         })
         toast.success('Ingredients added to shopping list.')
     }
+
+    useEffect(() => {
+        const checkSaved = () => {
+            //try some() for this instead of filter() 
+            if (savedRecipes.filter(obj => obj.id == recipeId).length > 0) {
+                setInSaved(true)
+            } else {
+                setInSaved(false)
+            }
+        }
+    
+        checkSaved()
+    }, [inSaved])
+  
+    
+    console.log(inSaved)
 
     return (
         <div className={fullRecipe.fullRecipeDiv}>
@@ -166,8 +169,12 @@ function FullRecipe() {
                     </div>
                 </div>
                 <div className={fullRecipe.btnDiv}>
-
-                    <button className={fullRecipe.btn} onClick={addBook}>Add to recipe book</button>
+                    
+                    {inSaved ? <button className={fullRecipe.btn} >Remove from recipe book</button> : 
+                    <button className={fullRecipe.btn} onClick={addBook}>Add to recipe book</button>}
+                    
+                    
+                    
                     <button className={fullRecipe.btn} onClick={addShop}>Add ingredients to shopping list</button>
 
                 </div>

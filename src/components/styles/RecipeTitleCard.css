@@ -4,6 +4,7 @@
 
 .recipe-title-image {
     border-radius: 20px;
+    max-width: 312px;
 }
 
 .recipe-card-title{
