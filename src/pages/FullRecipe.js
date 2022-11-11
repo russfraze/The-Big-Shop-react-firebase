@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getAuth } from 'firebase/auth'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, query, getDocs } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import axios from 'axios'
 import fullRecipe from '../styles/fullRecipe.module.css'
@@ -10,28 +10,68 @@ import { toast } from 'react-toastify'
 
 
 
-function FullRecipe({savedRecipes}) {
+function FullRecipe() {
     const auth = getAuth()
     const params = useParams()
 
     const recipeId = params.recipeId
 
+    //User data
     const [userData, setUserData] = useState({
         name: auth.currentUser.displayName,
         userId: auth.currentUser.uid,
     })
-
     const { name, userId } = userData
 
+    //recipe data
     const [recipeDetails, setRecipeDetails] = useState({
         id: recipeId,
     })
-
-    const [inSaved, setInSaved] = useState(null)
-
     const { id, title, image, ingredients, instructions, calories, protein, carbs, fat, servings } = recipeDetails
 
-    
+    //recipe book state
+    const [book, setBook] = useState(null)
+
+    //is recipe is in recipe book Boolean
+    const [inSaved, setInSaved] = useState(null)
+
+
+    useEffect(() => {
+        const checkRecipeBook = async (userId) => {
+            try {
+                // set loading to true 
+                const listingRef = collection(db, `users/${userId}/recipebook`)
+
+                const q = query(listingRef)
+
+                const querySnapshot = await getDocs(q)
+
+                const savedRecipes = []
+
+                querySnapshot.forEach((doc) => {
+                    savedRecipes.push(doc.data())
+                    
+                })
+                
+                if (savedRecipes.filter(obj => obj.id == recipeId).length > 0) {
+                    setInSaved(true)
+                } else {
+                    setInSaved(false)
+                }
+                
+            } catch (error) {
+                
+            }
+            console.log('book',book)
+        }
+
+        checkRecipeBook(userId)
+    }, [])
+
+    useEffect(() => {
+      
+    }, [book])
+
 
     useEffect(() => {
         const getRecipeDetails = () => {
@@ -96,21 +136,22 @@ function FullRecipe({savedRecipes}) {
         toast.success('Ingredients added to shopping list.')
     }
 
-    useEffect(() => {
-        const checkSaved = () => {
-            //try some() for this instead of filter() 
-            if (savedRecipes.filter(obj => obj.id == recipeId).length > 0) {
-                setInSaved(true)
-            } else {
-                setInSaved(false)
-            }
-        }
     
-        checkSaved()
-    }, [inSaved])
+                 
+    console.log(inSaved)
+        
+            
+
+    
+        
+
+    
+   
+
+
   
     
-    console.log(inSaved)
+   
 
     return (
         <div className={fullRecipe.fullRecipeDiv}>
