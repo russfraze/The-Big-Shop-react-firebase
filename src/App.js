@@ -15,9 +15,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 function App() {
-  const [ usersRecipes, setUsersRecipes] = useState('nothing yet')
-
-
+  
 
   return (
     <>
@@ -26,7 +24,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/:recipeId' element={<PrivateRoute />} >
-            <Route path='/:recipeId' element={<FullRecipe savedRecipes={usersRecipes}/>}></Route>
+            <Route path='/:recipeId' element={<FullRecipe />}></Route>
           </Route>
           <Route path='/register' element={<Register />}></Route>
           <Route path='/sign-in' element={<SignIn />}></Route>
@@ -41,7 +39,7 @@ function App() {
           </Route>
           
           <Route path='recipe-book' element={<PrivateRoute />}>
-            <Route path='/recipe-book' element={<RecipeBook liftUsersRecipes={setUsersRecipes}/>}></Route>
+            <Route path='/recipe-book' element={<RecipeBook />}></Route>
           </Route>
         </Routes>
       </Router>

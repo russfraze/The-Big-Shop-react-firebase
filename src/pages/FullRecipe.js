@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getAuth } from 'firebase/auth'
-import { collection, addDoc, query, getDocs } from 'firebase/firestore'
+import { collection, addDoc, query, getDocs, deleteDoc, doc, where, } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import axios from 'axios'
 import fullRecipe from '../styles/fullRecipe.module.css'
@@ -29,13 +29,10 @@ function FullRecipe() {
     })
     const { id, title, image, ingredients, instructions, calories, protein, carbs, fat, servings } = recipeDetails
 
-    //recipe book state
-    const [book, setBook] = useState(null)
-
     //is recipe is in recipe book Boolean
     const [inSaved, setInSaved] = useState(null)
 
-
+    //check if the recipe has been saved in recipe book
     useEffect(() => {
         const checkRecipeBook = async (userId) => {
             try {
@@ -62,17 +59,12 @@ function FullRecipe() {
             } catch (error) {
                 
             }
-            console.log('book',book)
         }
 
         checkRecipeBook(userId)
     }, [])
 
-    useEffect(() => {
-      
-    }, [book])
-
-
+    //get the full set of the information for this recipe
     useEffect(() => {
         const getRecipeDetails = () => {
             axios({
@@ -126,6 +118,23 @@ function FullRecipe() {
             image: image
         })
         toast.success('Recipe added to recipe book.')
+    }
+
+    const deleteBook = async () => {
+        if(window.confirm ('Are you sure you want to delete this from your recipe book?')){
+            const collectionRef = collection(db, `users/${userId}/recipebook`)
+            const q = query(collectionRef, where('id', '==',  Number(recipeId)))
+            
+            const snapshot = await getDocs(q)
+
+            const result = snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}))
+
+            result.forEach(async (res) => {
+                const docRef = doc(db, `users/${userId}/recipebook`, res.id)
+                await deleteDoc(docRef)
+                toast.success('Recipe deleted from recipe book.')
+            })
+        }
     }
 
     const addShop = async () => {
@@ -211,7 +220,7 @@ function FullRecipe() {
                 </div>
                 <div className={fullRecipe.btnDiv}>
                     
-                    {inSaved ? <button className={fullRecipe.btn} >Remove from recipe book</button> : 
+                    {inSaved ? <button className={fullRecipe.btn} onClick={deleteBook} >Remove from recipe book</button> : 
                     <button className={fullRecipe.btn} onClick={addBook}>Add to recipe book</button>}
                     
                     

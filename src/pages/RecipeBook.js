@@ -30,8 +30,12 @@ function RecipeBook({liftUsersRecipes}) {
                 //loop through the snapshot and use the data function  
                 //to get the data from the snapshot
                 querySnapshot.forEach((doc) => {
-                    savedRecipes.push(doc.data())
+                    savedRecipes.push({
+                        recipe: doc.data(),
+                        fbId: doc.id
+                    })
                     setRecipeBook(savedRecipes)
+                    console.log('current recipe book:', recipeBook)
                 })
                 liftUsersRecipes(savedRecipes)
             } catch (error) {
@@ -56,10 +60,11 @@ function RecipeBook({liftUsersRecipes}) {
             <div className='book-div'>
                 {recipeBook ? recipeBook.map((recipe) =>
                     <RecipeTitleCard
-                        title={recipe.title}
-                        image={recipe.image}
-                        id={recipe.id}
-                        key={recipe.id}
+                        title={recipe.recipe.title}
+                        image={recipe.recipe.image}
+                        id={recipe.recipe.id}
+                        key={recipe.recipe.id}
+                        fbId={recipe.fbId}
                     />) : ''}
             </div>
         </div>
