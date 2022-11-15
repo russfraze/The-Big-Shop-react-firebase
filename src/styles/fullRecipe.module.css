@@ -176,6 +176,13 @@ h1{
         flex-direction: column;
         margin-bottom: 20px;
     }
+
+    .btnDiv {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    }
     
   
 }
@@ -216,11 +223,4 @@ h1{
         max-height: none;
     }
 
-
-    .btnDiv {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-    }
 }
