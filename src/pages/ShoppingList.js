@@ -118,6 +118,7 @@ function ShoppingList() {
                 await deleteDoc(docRef)
                 setIngredientsList(null)
                 setIngSorted(null)
+                window.location.reload(false);
             })
 
         } catch (error) {
@@ -155,12 +156,10 @@ function ShoppingList() {
 
                             <div className={'sl-ingList-div'}>
                                 {Object.values(aisles)[index].map((arr, i) => {
-                                    // console.log('from map', arr.name)
+                                    console.log('from map', arr)
                                     return (
                                         <>
-
-                                            {/* <p>{arr.original}</p> */}
-                                            <Ingredient ingredientInfo={arr.original} />
+                                            <Ingredient ingredientInfo={arr.original} key={arr.id + arr.recipeTitle}  />
                                         </>
                                     );
                                 })}

@@ -183,7 +183,7 @@ function FullRecipe() {
 
                     <ul className={fullRecipe.ingUl}>
                         {ingredients ? ingredients.map((ingredient) => (
-                            <li className={fullRecipe.ingLi}>
+                            <li className={fullRecipe.ingLi} key={ingredient.id}>
                                 <p>{ingredient.original + ' '}</p>
                             </li>
                         )) : ''}
@@ -198,7 +198,7 @@ function FullRecipe() {
                     <ol className={fullRecipe.instOl}>
 
                         {instructions ? instructions.map((step) => (
-                            <li>
+                            <li key={step.step}>
                                 <p>{step.step}</p>
                             </li>)) : ''}
 

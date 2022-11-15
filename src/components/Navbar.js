@@ -20,7 +20,7 @@ function Navbar() {
     console.log(navIsOpen)
 
     return (
-        <nav className='navigation' onClick={() => setNavIsOpen(!navIsOpen)}>
+        <nav className='navigation' onClick={navIsOpen ? () => setNavIsOpen(!navIsOpen) : null}>
 
 
             <div className='burger' onClick={() => setNavIsOpen(!navIsOpen)}>

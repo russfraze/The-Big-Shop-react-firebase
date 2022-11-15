@@ -37,7 +37,7 @@ function RecipeBook({liftUsersRecipes}) {
                     setRecipeBook(savedRecipes)
                     console.log('current recipe book:', recipeBook)
                 })
-                liftUsersRecipes(savedRecipes)
+                
             } catch (error) {
                 console.log(error)
             }
