@@ -78,8 +78,10 @@ function Home() {
                 </form>
             </div>
 
-            <div className={home.results}>
-                <PaginatedItems itemsPerPage={12} recipes={recipes} />
+            <div className={'paginationDiv'} >
+                <div className={home.results}>
+                    <PaginatedItems itemsPerPage={12} recipes={recipes} />
+                </div>
             </div>
 
         </div>
