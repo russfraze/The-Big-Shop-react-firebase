@@ -53,3 +53,7 @@ input {
     align-items: center;
     margin-top: 20px;
 }
+
+.signOutText {
+    margin-left: 10px;
+}

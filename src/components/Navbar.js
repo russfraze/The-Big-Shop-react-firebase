@@ -17,7 +17,7 @@ function Navbar() {
             return true
         }
     }
-    console.log(navIsOpen)
+    // console.log(navIsOpen)
 
     return (
         <nav className='navigation' onClick={navIsOpen ? () => setNavIsOpen(!navIsOpen) : null}>

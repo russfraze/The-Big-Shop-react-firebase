@@ -82,9 +82,9 @@ function Profile() {
                     setChangeDetails((prevState) => !prevState)
                 }}>{changeDetails ? 'done' : 'change'}</p>
 
-                <div className={profile.signOut} >
-                    <FaSignOutAlt onClick={logOut} />
-                    <p>Sign out</p>
+                <div className={profile.signOut} onClick={logOut}>
+                    <FaSignOutAlt />
+                    <p className={profile.signOutText}>Sign out</p>
                 </div>
 
             </div>

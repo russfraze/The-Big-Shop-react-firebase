@@ -28,7 +28,7 @@ p {
 
 .registerForm {
     background-color: #ffffff;
-    padding: 35px 30px 45px 30px;
+    padding: 35px 30px 25px 30px;
 
 }
 
@@ -36,7 +36,7 @@ p {
 .registerInputs{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     /* width: 265px; */
 }
 
@@ -46,6 +46,13 @@ p {
     justify-content: flex-start;
 }
 
+.registerEye {
+    margin-bottom: 12px;
+}
+
+.registerSubBtn {
+    margin-bottom: 10px;
+}
 
 .passwordInputDiv {
     position: relative;
@@ -78,7 +85,8 @@ p {
     
 }
 
-.textLink {
+.registerTextLink {
     color: #ffffff;
     text-decoration: none;
+    margin-bottom: 12px;
   }

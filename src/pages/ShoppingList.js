@@ -66,8 +66,7 @@ function ShoppingList() {
 
     useEffect(() => {
         if (ingredientsList) {
-            console.log('not null')
-
+            
             const recipes = ingredientsList;
 
             const ingredientsByAisle = recipes.flatMap((recipe) =>
@@ -91,10 +90,6 @@ function ShoppingList() {
 
             console.log('aisles log', aisles)
 
-            // const sorted = ingredientsByAisle.sort((a, b) => a.aisle.localeCompare(b.aisle))
-
-            // console.log(sorted)
-            // setIngSorted(sorted)
             setAisles(aisles)
         }
     }, [ingredientsList])

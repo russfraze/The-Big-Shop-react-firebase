@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { serverTimestamp, setDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import { FaEye } from 'react-icons/fa'
-import register from '../styles/register.module.css'
+import '../styles/register.css'
 
 
 function Register() {
@@ -17,6 +17,10 @@ function Register() {
 
     const { email, name, password } = formData
 
+    const [showPassword, setShowPassword] = useState(false)
+    
+    const navigate = useNavigate()
+
     const handleChange = (e) => {
         setFormData((prevState) => ({
             ...prevState,
@@ -24,7 +28,6 @@ function Register() {
         }))
     }
 
-    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -58,26 +61,26 @@ function Register() {
     }
 
     return (
-        <div className={register.registerDiv}>
+        <div className={'registerDiv'}>
 
-            <h1 className={register.registerHead}>Register</h1>
+            <h1 className={'registerHead'}>Register</h1>
 
-            <form className={register.registerForm} onSubmit={handleSubmit}>
-                <div className={register.registerInputs}>
+            <form className={'registerForm'} onSubmit={handleSubmit}>
+                <div className={'registerInputs'}>
                     <input type='email' name='email' placeholder='enter email' onChange={handleChange} />
                     <input type='text' name='name' placeholder='enter name' onChange={handleChange} />
-                    <input type='text' name='password' placeholder='enter password' onChange={handleChange} />
+                    <input type={showPassword ? 'text' : 'password'} name='password' placeholder='enter password' onChange={handleChange} />
 
 
-                    <div className={register.registerButtons}>
-                        <FaEye />
-                        <div>
+                    <div className={'registerButtons'}>
+                        <FaEye className='registerEye' onClick={() => setShowPassword(!showPassword)} />
+                        <div className={'registerSubBtn'}>
                             <button className='button-main'>Submit</button>
                         </div>
-                        <Link className={register.textLink} to='/forgot-password'>
+                        <Link className={'registerTextLink'} to='/forgot-password'>
                             <p>Forgot password?</p>
                         </Link>
-                        <Link className={register.textLink} to='/sign-in' >
+                        <Link className={'registerTextLink'} to='/sign-in' >
                             <p>Sign in</p>
                         </Link>
                     </div>

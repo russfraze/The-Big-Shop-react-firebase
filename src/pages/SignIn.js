@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaEye } from 'react-icons/fa'
-import signIn from '../styles/signIn.module.css'
+import '../styles/signIn.css'
 
 
 function SignIn() {
@@ -13,6 +13,10 @@ function SignIn() {
     })
 
     const { email, password } = formData
+    
+    const navigate = useNavigate()
+
+    const [showPassword, setShowPassword] = useState(false)
 
     const handleChange = (e) => {
         setFormData((prevState) => ({
@@ -21,7 +25,6 @@ function SignIn() {
         }))
     }
 
-    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -45,16 +48,16 @@ function SignIn() {
     }
 
     return (
-        <div className={signIn.signInDiv}>
+        <div className={'signInDiv'}>
 
-            <h1 className={signIn.signHead}>Sign In</h1>
+            <h1 className={'signHead'}>Sign In</h1>
 
-            <div className={signIn.signInForm}>
-                <form className={signIn.signInInputs} onSubmit={handleSubmit}>
+            <div className={'signInForm'}>
+                <form className={'signInInputs'} onSubmit={handleSubmit}>
                     <input type='email' name='email' placeholder='enter email' onChange={handleChange} />
-                    <input type='password' name='password' placeholder='enter password' onChange={handleChange} />
-                    <FaEye />
-                    <button className='button-main'>Submit</button>
+                    <input type={showPassword ? 'text' : 'password'} name='password' placeholder='enter password' onChange={handleChange} />
+                    <FaEye className={'signInEye'} onClick={() => setShowPassword(!showPassword)} />
+                    <button className='button-main signBtn'>Submit</button>
                 </form>
 
                 <Link className='text-link' to='/forgot-password'>
