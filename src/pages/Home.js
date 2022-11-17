@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import RecipeTitleCard from '../components/RecipeTitleCard'
-import { FaSearch } from 'react-icons/fa'
 import home from '../styles/home.module.css'
 import Logo from '../assets/LOGO_V2.png'
+import PaginatedItems from '../components/PaginatedItems'
+import ReactPaginate from 'react-paginate';
 
 function Home() {
     const [recipes, setRecipes] = useState()
@@ -27,7 +28,7 @@ function Home() {
             params: {
                 apiKey: process.env.REACT_APP_SPOON_KEY,
                 query: searchTerms,
-                number: 10,
+                number: 100,
             }
         }
 
@@ -45,25 +46,25 @@ function Home() {
 
         const resultClass = () => {
             var classAss = ''
-            if(recipes) {
+            if (recipes) {
                 classAss = home.homeResults
                 setTestThis(classAss)
             } else {
                 classAss = home.home
             }
 
-        
 
-        
+
+
         }
 
         resultClass()
-       
+
     }, [recipes])
 
-    
+
     return (
-        <div className={ testThis }>
+        <div className={testThis}>
 
             <div className={home.homeGroup}>
 
@@ -78,14 +79,7 @@ function Home() {
             </div>
 
             <div className={home.results}>
-
-                {recipes ? recipes.map((recipe) =>
-                    <RecipeTitleCard
-                        image={recipe.image}
-                        title={recipe.title}
-                        id={recipe.id}
-                        key={recipe.id}
-                    />) : ''}
+                <PaginatedItems itemsPerPage={12} recipes={recipes} />
             </div>
 
         </div>

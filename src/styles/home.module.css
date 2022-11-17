@@ -15,11 +15,6 @@ html .home {
     background-color: #ffffff;
 }
 
-/* .logo {
-    height: 60px;
-    margin: 60px 0px 25px 0px 
-} */
-
 .headline {
     margin-bottom: 25px;
     color: #ffffff;
@@ -29,7 +24,6 @@ html .home {
 .searchBar {
     display: flex;
     align-items: center;
-    /* align-items: flex-start; */
 }
 
 .search-icon {

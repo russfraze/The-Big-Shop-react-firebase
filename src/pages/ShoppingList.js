@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import { getAuth } from 'firebase/auth'
-import { getDocs, query, collection, deleteDoc, doc } from 'firebase/firestore'
+import { getDocs, query, collection, deleteDoc, doc, arrayRemove } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import Ingredient from '../components/Ingredient'
-import { FirebaseError } from 'firebase/app'
 import '../styles/shoppingList.css'
 
 
@@ -74,7 +73,7 @@ function ShoppingList() {
             const ingredientsByAisle = recipes.flatMap((recipe) =>
                 recipe.ingredients.map((ingredient) => ({
                     recipeTitle: recipe.title,
-                    ...ingredient
+                    ...ingredient,
                 }))
             );
 
@@ -136,36 +135,36 @@ function ShoppingList() {
 
                 {Object.keys(aisles).map((key, index) => {
                     return (
-                        <>
+                        <div key={index}>
                             <div className={'sl-group'} key={index}>
 
-                                <div className={'sl-ailse-div'}>
-                                    <div className={'sl-shape'}>
-                                        <p className={'sl-aisle-title'}>{key}: </p>
+                                <div className={'sl-ailse-div'} >
+                                    <div className={'sl-shape'} >
+                                        <p className={'sl-aisle-title'} >{key}: </p>
                                     </div>
 
 
                                 </div>
-                                <div className={'sl-line-div'}>
-                                    <div className={'sl-line'}></div>
+                                <div className={'sl-line-div'} >
+                                    <div className={'sl-line'} ></div>
                                 </div>
 
 
 
                             </div>
 
-                            <div className={'sl-ingList-div'}>
+                            <div className={'sl-ingList-div'} >
                                 {Object.values(aisles)[index].map((arr, i) => {
                                     console.log('from map', arr)
                                     return (
-                                        <>
+                                        <div key={arr.id + i}>
                                             <Ingredient ingredientInfo={arr.original} key={arr.id + arr.recipeTitle}  />
-                                        </>
+                                        </div>
                                     );
                                 })}
                             </div>
 
-                        </>
+                        </div>
 
 
 
@@ -173,9 +172,6 @@ function ShoppingList() {
                 })}
 
 
-
-
-                {/* {ingSorted ? ingSorted.map((ing) => <Ingredient aisle={ing.aisle} name={ing.name} amount={ing.measures.us.amount} unit={ing.measures.us.unitShort}  title={ing.recipeTitle} key={ing.id} />) : ''} */}
                 <button className={'btn'} onClick={clearList}>Clear list</button>
             </div>
         </div>
