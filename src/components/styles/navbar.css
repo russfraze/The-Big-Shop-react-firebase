@@ -5,7 +5,6 @@
   min-height: 8vh;
   background-color: #02311f;
   display: flex;
-  /* justify-content: space-around; */
   align-items: center;
 }
   
@@ -42,10 +41,9 @@
   
   
 .burger {
-    display: none;
-    position: absolute;
-    right: 25px
-    /* transform: translateY(-50%) */
+  display: none;
+  position: absolute;
+  right: 25px
 }
   
   
@@ -73,7 +71,7 @@
       width: 100%;
       height: calc(100vh - 60px);
       background-color: white;
-      border-top: 1px solid black;
+      /* border-top: 1px solid black; */
       display: none;
     }
   
