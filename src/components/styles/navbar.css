@@ -71,7 +71,7 @@
       width: 100%;
       height: calc(100vh - 60px);
       background-color: white;
-      /* border-top: 1px solid black; */
+      border-top: 1px solid black;
       display: none;
     }
   
